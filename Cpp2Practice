@@ -1,0 +1,105 @@
+#include <iostream>
+using namespace std;
+
+2주차
+
+2주차. Stdio. 1. (문자열 입출력)
+int main() {
+	cout << "이름 입력: ";
+	char name[10];
+	cin.getline(name, 10, '\n');
+	cout << "당신의 이름은 " << name << " 입니다." << endl;
+	return 0;
+}
+
+2주차. Stdio. 2.(입력 연습)
+int main() {
+	cout << "너비 : ";
+	int width;
+	cin >> width;
+	cout << "높이 : ";
+	int height;
+	cin >> height;
+	cout << "면적 = " << height * width << endl;
+	return 0;
+}
+
+2주차. Stdio. 3.(출력 연습)
+double area(int r);
+int main() {
+	int n = 3; char c = '#';
+	cout << c << 5.5 << '-' << endl;
+	cout << true << endl;
+	cout << "n+5  = " << n + 5 << endl;
+	cout << "면적은 " << area(n) << endl;
+	cout << "stdio.ex" << endl;
+	return 0;
+}
+double area(int r) {
+	return 3.14* r *r;
+}
+
+2주차. PWD. 1.(문자 암호)
+int main() {
+	char pwd[10];
+	while (true) {
+		cout << "input password : ";
+		cin.getline(pwd, 10, '\n');
+		if (strcmp(pwd, "alpha go") == 0) {
+			cout << "Correct pwd" << endl;
+			break;
+		}
+		else if (strcmp(pwd, "\0") == 0) {
+			cout << "Stop" << endl;
+			break;
+		}
+		else
+			cout << "Incorrect pwd" << endl;
+	}
+	return 0;
+}
+
+2주차. ArrayAndSizeof. 1.(다양한 자료형의 Sizeof)
+int main() {
+	cout << "sizeof(int) : " << sizeof(int) << endl;
+	cout << "sizeof(short) : " << sizeof(short) << endl;
+	cout << "sizeof(long) : " << sizeof(long) << endl;
+	cout << "sizeof(float) : " << sizeof(float) << endl;
+	cout << "sizeof(double) : " << sizeof(double) << endl;
+	cout << "sizeof(char) : " << sizeof(char) << endl;
+	cout << "sizeof(bool) : " << sizeof(bool) << endl;
+	return 0;
+}
+
+2주차. ArrayAndSizeof. 2.(sizeof와 strlen)
+int main() {
+	int i = 65;
+	char c = 65;
+	cout << "i : " << i << " c : " << c << endl;
+	char str[] = "Alpha Go";
+	cout << "sizeof(str) : " << sizeof(str) << endl;
+	cout << "strlen(str) : " << strlen(str) << endl;
+	return 0;
+}
+
+
+2주차. ArrayAndSizeof. 3.(배열의 Sizeof)
+int main() {
+	int arr1[3] = { 1, 2, 3 };
+	int arr2[5] = { 5, 6, 7, 8, 9 };
+	cout << "sizeof(arr1) : " << sizeof(arr1) << endl;
+	cout << "arr1 : " << arr1 << endl;
+	cout << "arr1[0] : " << arr1[0] << endl;
+	cout << "&arr1[0] : " << &arr1[0] << endl;
+
+
+	char arrC[] = { 'h', 'e', 'l', 'l', 'o' };
+	char arrD[] = { 'h', 'e', 'l', 'l', 'o', '\0' };
+	cout << "(void*) arrD : " << (void *)arrD << endl;
+	cout << "arrD : " << arrD << endl;
+	cout << "(void*) &arrD[0] : " << (void*)&arrD[0] << endl;
+	cout << "(void*)arrC : " << (void*)arrC << endl;
+	cout << "arrC : " << arrC << endl;                         //hello쓰레기값 출력
+	
+	return 0;
+}
