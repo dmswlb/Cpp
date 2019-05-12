@@ -1,0 +1,140 @@
+3주차
+
+3주차. 2018mid. 1.(28년 기출문제)
+int main() {
+	int a = 200;
+	int b = 30;
+	double c = 4556000;
+	int* ip = &a;
+	int* ip2 = &b;
+	double* dp = &c;
+	char d = 'A';
+	void* vp = ip;
+	*ip2 = 33;
+
+	cout << "&a : " << &a << endl;
+	cout << "ip : " << ip << endl;
+ 	cout << "&b : " << &b << endl;
+	cout << "ip2 : " << ip2 << endl;
+	cout << " b = *ip2" << b << "=" << *ip2 << endl;
+	cout << "&c : " << &c << endl;
+	cout << "vp : " << vp << endl;
+
+
+	cout << "dp : " << dp << endl;
+	cout << "*ip2 : " << *ip2 << endl;
+	cout << "&b : " << &b << endl;
+	cout << "sizeof(dp) : " << sizeof(dp) << endl;
+	cout << "&d : " << &d << endl;
+	return 0;
+}
+
+3주차. AccessToElt. 1.
+int main() {
+	int a[10] = { -999 };
+	cout << "sizeof(a) : " << sizeof(a) << endl;
+	int* p = a;
+	cout << "1.배열명을 사용한 index 표현" << endl;
+	int i;
+	for (i = 0; i < 10; i++) {
+		a[i] = i;
+		cout << a[i] << " ";
+	}
+	cout << endl << endl;
+	cout << "2.배열명을 사용한 pointer 표현" << endl;
+	for (i = 0; i< 10; i++) {
+		*(a + i) = i;
+		cout << *(a + i) <<  " ";
+	}
+	cout << endl << endl;
+	cout << "3.포인터 변수를 사용한 pointer 표현" << endl;
+	for (i = 0; i < 10; i++) {
+		*(p + i) = i;
+		cout << *(p + i) << " ";
+	}
+	cout << endl << endl;
+	cout << "4.포인터 변수를 사용한 index 표현" << endl;
+	for (i = 0; i < 10; i++) {
+		p[i] = i;
+		cout << p[i] << " ";
+	}
+	cout << endl;
+ }
+
+3주차. ArrNPtr. 1.(포인터 변수에 대입)
+int main() {
+	int j;
+	int* p = &j;
+	cout << p << endl;
+	p = p + 1;
+	cout << p << endl;
+	p = p - 1;
+	cout << p << endl;
+	return 0;
+}
+
+3주차. ArrNPtr. 2.(전치 연산자와 후치 연산자)
+int main() {
+	int i;
+	int* p = &i;
+	cout << p << endl;
+	cout << p++ << endl;
+	cout << p << endl;
+	cout << ++p << endl;
+	return 0;
+}
+
+3주차. ArrNPtr. 3.(포인터 변수 간 뺄셈)
+int main() {
+	double arr[10];
+	double* ps1 = &arr[3];
+	double* ps2 = &arr[7];
+
+	cout << &arr[0] << endl;
+	cout << &arr[1] << endl;
+	cout << &arr[2] << endl;
+	cout << &arr[3] << endl;
+	cout << ps1 << endl;
+	cout << ps2 << endl;
+	cout << ps2 - ps1 << endl;                               //4
+	cout << &arr[7] - &arr[3] << endl;                       //4
+	return 0;
+}
+
+3주차. funcMin. 1.(최솟값 구하기)
+double funcMin(double arr[], int size);
+int main() {
+	double arr[] = { 6, -7, 1, 4 };
+	cout << &arr[0] << endl;
+	cout << "sizeof(arr) : " << sizeof(arr) << endl;
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout << "funcMin(arr, n) : " << funcMin(arr, n) << endl;
+	return 0;
+}
+double funcMin(double arr[], int size) {
+	double min = arr[0];
+	cout << "sizeof(arr) : " << sizeof(arr) << endl;               //4
+	for (int i = 0; i < size; i++) {
+		if (min > arr[i])
+			min = arr[i];
+	}
+	return min;
+}
+
+3주차. PtrEx. 1.(퀴즈 풀이)
+int main() {
+	cout << "242 : " << 242 << " " << hex << showbase << 242 << endl;
+	cout << " 27 : " << dec << 27 << " " << hex << showbase << 27 << endl;
+	cout << " 33 : " << dec << 33 << " " << hex << showbase << 33 << endl;
+	cout << "237 : " << dec << 237 << " " << hex << showbase << 237 << endl;
+	return 0;
+}
+
+3주차. PtrEx. 2.(문자열 sizeof)
+int main() {
+	char cArray1[] = "ABCDE";
+	char cArray2[] = { 'A', 'B', 'C', 'D', 'E', '\0' };
+	cout << "sizeof(cArray1) : " << sizeof(cArray1) << endl;
+	cout << "sizeof(cArray2) : " << sizeof(cArray2) << endl;
+	return 0;
+}
