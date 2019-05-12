@@ -1,0 +1,116 @@
+4주차
+
+
+#include <iostream>
+using namespace std;
+
+4주차. FuncEx. 1.(매개변수 전달 방식 3가지)
+void sub(int i, int *p, int&r);
+int main() {
+	int x = 1; int y = 2; int z = 3;
+	sub(x, &y, z);
+	cout << "x = " << x << "," << "y = " << y << "," << "z = " << z << endl;
+	return 0;
+}
+void sub(int i, int*p, int& r) {
+	i = 10;
+	*p = 20;
+	r = 30;
+}
+
+4주차. FuncEx. 2.(call by ptr/ref)
+void add_mul_ptr(int a, int b, int*p1, int* p2);
+void add_mul_ref(int a, int b, int& r1, int& r2);
+int main() {
+	int add_p = 0; int mul_p = 0; int add_r = 0; int mul_r = 0;
+	int x = 10; int y = 20; int n = 4; int m = 9;
+	add_mul_ptr(x, y, &add_p, &mul_p);
+	cout << "add_p = " << add_p << "," << "mul_p = " << mul_p << endl;
+	add_mul_ref(m, n, add_r, mul_r);
+	cout << "add_r = " << add_r << "," << "mul_r = " << mul_r << endl;
+	return 0;
+}
+void add_mul_ptr(int a, int b, int* p1, int* p2) {
+	*p1 = a + b;
+	*p2 = a * b;
+}
+void add_mul_ref(int a, int b, int& r1, int& r2) {
+	r1 = a + b;
+	r2 = a * b;
+}
+
+4주차. FuncEx. 3.(문자열 변경)
+void usingArr(char* p);
+int main() {
+	char a[20] = "Hello, World!";
+	cout << "a = " << a << endl;
+	usingArr(a);
+	cout << "a = " << a << endl;
+	return 0;
+}
+void usingArr(char* p) {
+	*(p+12) = '?';      // 또는 p[12] = '?'
+}
+
+
+4주차. FuncEx. 4.(swap)
+void swap_val(int x, int y);
+void swap_ptr(int* x, int* y);
+void swap_ref(int& x, int& y);
+int main() {
+	int u, v;
+	cout << "첫 번째 수 : "; 
+	cin >> u;
+	cout << "두 번째 수 : ";
+	cin >> v;
+	cout << "u = " << u << ", " << "v = " << v << endl;
+	swap_val(u, v);
+	cout << "u = " << u << ", " << "v = " << v << endl;
+	swap_ptr(&u, &v);
+	cout << "u = " << u << ", " << "v = " << v << endl;
+	swap_ref(u, v);
+	cout << "u = " << u << ", " << "v = " << v << endl;
+	return 0;
+}
+void swap_val(int x, int y) {
+	int tmp;
+	tmp = y; y = x; x = tmp;
+}
+void swap_ptr(int* x, int* y) {
+	int tmp;
+	tmp = *y; *y = *x; *x = tmp;
+}
+void swap_ref(int& x, int& y) {
+	int tmp;
+	tmp = y; y = x; x = tmp;
+}
+
+4주차. PtrEx2. 1.(포인터의 전치와 후치)
+int main() {
+	int a[10] = { -999, -888, -777, -666, -555 };
+	int* p = a;
+	cout << p << endl;
+	for (int i = 0; i < 10; i++) {
+		//*p++ = i * i * i;
+		*++p = i *i;                 //run time error 발생
+		cout << p << " ";
+	}
+	cout << endl << p << endl;
+	return 0;
+}
+
+4주차. RefEx. 1.(일반/포인터/레퍼런스 변수)
+int main() {
+	int target = 20;
+	int* p = &target;
+	int& r = target;
+	int b = 305;
+	r = b;
+	cout << "     r = " << r << endl;
+	cout << "target = " << target << endl;
+	cout << "    *p = " << *p << endl << endl;
+	cout << "     &r = " << &r << endl;
+	cout << "&target = " << &target << endl;
+	cout << "      p = " << p << endl;
+	return 0;
+}
