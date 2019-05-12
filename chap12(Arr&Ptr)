@@ -1,0 +1,35 @@
+12. 포인터와 배열(Ptr&Arr)
+
+  Vitamin Quiz p.265 i를 사용하지 않고 포인터를 이용해 배열 탐색하기
+  
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[10];
+	int* p = arr;
+	while (true) {
+		cout << "p에 값 넣기: ";
+		cin >> *(p);
+		cout << "*p의 값: " << *p << endl;
+		p++;
+		if (p == &arr[10]) {
+			break;
+		}
+	}
+	return 0;
+}
+
+  ex. 12-1. 배열을 가리키는 포인터를 사용해서 배열 탐색하기
+  
+#include <iostream>
+using namespace std;
+
+int main(void) {
+	int a[5] = { 1, 2, 3, 4, 5 };
+	int* p = &a[0];
+	for (int i = 0; i < 5; i++) {
+		cout << "a[" << i << "]의 값 : " << *(p + i) << endl;     //*(p+i) 또는 (*)p[i]
+	}
+	return 0;
+}
