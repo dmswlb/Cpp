@@ -1,0 +1,80 @@
+16. 동적 메모리 할당(Dy)
+
+  ex. 16-1. 상위권 점수 출력
+#include <iostream>
+using namespace std;
+
+int main() {
+	int n;
+	float sum = 0;
+	float avg;
+	cout << "학생 수:";
+	cin >> n;
+	float* score = new float[n];
+	for (int i = 0; i < n; i++) {
+		cout << i+1 << "번 학생의 점수: ";
+		cin >> score[i];
+		sum += score[i];
+	}
+	avg = sum / n;
+	cout << "평균: " << avg << endl;
+	cout << "평균보다 높은 점수: ";
+	for (int i = 0; i < n; i++) {		
+		if (score[i] > avg) {
+			cout << score[i] << "점 ";
+		}
+	}
+	return 0;
+}
+
+  예제. 16-5. 문자열을 뒤집는 함수
+#include <iostream>
+using namespace std;
+
+char* ReS(const char* src, int len);
+int main() {
+	char ori[] = "NEMODORI";
+	char* copy = ReS(ori, 8);
+	cout << "원래 문자열: " << ori << endl;
+	cout << "역순 문자열: " << copy << endl;
+	delete[] copy; copy = NULL;
+	return 0;
+}
+char* ReS(const char* src, int len) {
+	char* reverse = new char[len + 1];
+	for (int i = 0; i < len ; i++) {
+		reverse[i] = src[len - i -1];
+	}
+	reverse[len] = NULL;
+	return reverse;
+}
+
+  ex. 16-2. 문자열 이동하기
+#include <iostream>
+using namespace std;
+
+char* StringLShift(char arr[],int size );
+int main() {
+	char m[] = "BINGO JJANG!!!";
+	const int n = sizeof(m) / sizeof(m[0]);
+	char ori[] = "BINGO JJANG!!!";
+	while (true) {
+		cout << m << endl;
+		char* copy = StringLShift(m, n);
+		strcpy_s(m, copy);
+		if (strcmp(m, ori) == 0) {
+			break;
+		}
+		delete[] copy; copy = NULL;
+	}
+	return 0;
+}
+char* StringLShift(char arr[], int size) {
+	char* s = new char[size];
+	for (int i = 0; i < size - 2; i++) {
+		s[i] = arr[i + 1];
+	}
+	s[size - 2] = arr[0];
+	s[size - 1] = NULL;
+	return s;
+}
