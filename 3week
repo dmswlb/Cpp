@@ -1,5 +1,8 @@
 3주차
 
+#include <iostream>
+using namespace std;
+
 3주차. 2018mid. 1.(28년 기출문제)
 int main() {
 	int a = 200;
