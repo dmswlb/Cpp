@@ -1,0 +1,158 @@
+21. 클래스와 객체(Class&Object)
+
+  ex. 21-1. 거리 계산
+#include <iostream>
+using namespace std;
+
+class func {
+public:
+	int x, y;
+	void Print();
+	float DistanceFromOri();
+};
+void func::Print() {
+	cout << "(" << x << ", " << y << ")" << endl;
+}
+float func::DistanceFromOri() {
+	return sqrt(x*x + y * y);
+}
+int main() {
+	func a;
+	cout << "x 좌표:";
+	cin >> a.x;
+	cout << "y 좌표: ";
+	cin >> a.y;
+	cout << "거리: " << a.DistanceFromOri() << endl;
+	return 0;
+}
+
+  ex, 21-2. 당구공 클래스   => 이해 안 됨
+#include <iostream>
+using namespace std;
+
+class Ball {
+public:
+	int _x, _y;
+	int _radius;
+	Ball();
+	Ball(int initx, int inity);
+	Ball(const Ball& b);
+};
+Ball::Ball() {
+	this->_x = 0;
+	this->_y = 0;
+}
+Ball::Ball(int initx, int inity) {
+	this->_x = initx;
+	this->_y = inity;
+}
+Ball::Ball(const Ball& b) {
+	this->_radius = b._radius;
+	this->_x = b._x + this->_radius *2;
+	this->_y = b._y;
+}
+
+  예제. 21-15   => 인자 있는 생성자 1개, 소멸자 1개 호출
+#include <iostream>
+using namespace std;
+
+class Dyarr {
+public:
+	int* arr;
+	Dyarr();
+	Dyarr(int arrsize);
+	~Dyarr();
+};
+Dyarr::Dyarr() {
+	cout << "디폴트 생성자" << endl;
+	this->arr = NULL;
+}
+Dyarr::Dyarr(int arrsize) {
+	cout << "인자 있는 생성자" << endl;
+	this->arr = new int[arrsize];
+}
+Dyarr::~Dyarr() {
+	cout << "소멸자" << endl;
+	delete[] arr; 
+	arr = NULL;
+}
+int main() {
+	
+	int n;
+	cout << "입력 할 정수의 개수: ";
+	cin >> n;
+
+	Dyarr da(n);
+	for (int i = 0; i < n; i++) {
+		cout << "정수 입력: ";
+		cin >> da.arr[i];
+	}
+	for (int i = n - 1; i >= 0; i--) {
+		cout << da.arr[i] << " ";
+	}
+	return 0;
+}
+
+  ex. 21-4. 접근자 추가
+#include <iostream>
+using namespace std;
+
+class Ball {
+public:
+	int x, y;
+	Ball();
+	Ball(int initx,int inity);
+	Ball(const Ball& b);
+	~Ball();
+	void setx(int exx);
+	void sety(int exy);
+	void Print();
+};
+Ball::Ball() {
+	cout << "디폴트 생성자" << endl;
+	this->x = 0;
+	this->y = 0;
+}
+Ball::Ball(int initx, int inity) {
+	cout << "인자 있는 생성자" << endl;
+	this->x = initx;
+	this->y = inity;
+}
+Ball::Ball(const Ball& b) {
+	cout << "복사 생성자" << endl;
+	this->x = b.x;
+	this->y = b.y;
+}
+Ball::~Ball() {
+	cout << "소멸자" << endl;
+}
+void Ball::setx(int exx) {
+	if (exx < 200) {
+		this->x = 200;
+	}
+	else if (exx > 800)
+		this->x = 800;
+	else
+		this->x = exx;
+	
+}
+void Ball::sety(int exy) {
+	if (exy < 200) {
+		this->y = 200;
+	}
+	else if (exy > 800)
+		this->y = 800;
+	else
+		this->y = exy;
+}
+void Ball::Print() {
+	cout << "(" << this->x << ", " << this->y << ")" << endl;
+ }
+int main() {
+	Ball m;
+	m.setx(519);
+	m.sety(71);
+	cout << "m의 위치: ";
+	m.Print();
+	return 0;
+}
