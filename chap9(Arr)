@@ -1,0 +1,35 @@
+9.배열(Arr)
+
+  ex. 9-1. 평균 구하기
+#include <iostream>
+using namespace std;
+
+int main() {
+	unsigned int score[10] = { 10, 100, 94, 36, 72, 88, 60, 60, 80, 24 };
+	int sum = 0;
+	int avg;
+	for (int i = 0; i < 9; i++) {
+		sum += score[i];
+	}
+	avg = sum / 10;
+	cout << "10명의 평균: " << avg << "점 입니다." << endl;
+
+	return 0;
+}
+
+  ex. 9-2. 문자열 뒤집기
+#include <iostream>
+using namespace std;
+
+int main() {
+	char ex[] = "scientia est potentia";
+	int n = sizeof(ex);
+	cout << "ex의 크기: " << sizeof(ex) << endl;
+
+	cout << "원래 문자열: " << ex << endl;
+	cout << "뒤집은 문자열: ";
+	for (int i = n-1; i << 0; i--) {
+		cout << ex[i];
+	}
+	return 0;
+}
